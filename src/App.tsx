@@ -14,9 +14,14 @@ import Loading from "./shared/Loading";
 
 // Importing Layouts
 import AuthLayout from "./core/layouts/AuthLayout";
+import AdminLayout from "./core/layouts/AdminLayout";
 
 // Importing Auth Pages
 const AuthSignin = lazy(() => import("./features/auth/pages/Signin"));
+const AuthAdmin = lazy(() => import("./features/auth/pages/Admin"));
+
+// Importing Admin Pages
+const AdminIndex = lazy(() => import("./dashboards/admin/pages/admin"));
 
 function App() {
   const toastRef = createRef<any>();
@@ -57,6 +62,39 @@ function App() {
           }
         >
           <Route index element={<AuthSignin />} />
+          <Route path="auth/admin" element={<AuthAdmin />} />
+        </Route>
+
+        <Route
+          path="/admin"
+          element={
+            <Suspense fallback={<Loading />}>
+              <SnackbarProvider
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                ref={toastRef}
+                TransitionComponent={Grow}
+                preventDuplicate
+                autoHideDuration={5000}
+                action={(key: any) => (
+                  <IconButton
+                    size="small"
+                    aria-label="close"
+                    color="inherit"
+                    onClick={closeToast(key)}
+                  >
+                    <CloseIcon fontSize="small" />
+                  </IconButton>
+                )}
+              >
+                <AdminLayout />
+              </SnackbarProvider>
+            </Suspense>
+          }
+        >
+          <Route index element={<AdminIndex />} />
         </Route>
       </Routes>
     </div>
