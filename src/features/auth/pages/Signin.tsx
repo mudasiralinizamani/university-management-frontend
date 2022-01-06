@@ -53,7 +53,16 @@ function Signin() {
           localStorage.setItem("id", res.data.id);
           localStorage.setItem("role", res.data.role);
           navigate("/admin", { replace: true });
-          enqueueSnackbar(`Welcome in Admin Dashboard`, { variant: "info" });
+          return enqueueSnackbar(`Welcome in Admin Dashboard`, {
+            variant: "info",
+          });
+        } else if (res.data.role === "Dean") {
+          localStorage.setItem("id", res.data.id);
+          localStorage.setItem("role", res.data.role);
+          navigate("/dean", { replace: true });
+          return enqueueSnackbar(`Welcome in Dean Dashboard`, {
+            variant: "info",
+          });
         }
       })
       .catch((err: AxiosError) => {
@@ -72,7 +81,7 @@ function Signin() {
         Sign In
       </Typography>
       <div className="entry__info">
-        Just sign in if you have an account in here. Enjoy our App
+        Sign in if you have an account in here
       </div>
       <Box
         component="form"

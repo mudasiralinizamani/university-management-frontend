@@ -9,7 +9,12 @@ function AuthLayout() {
       localStorage.getItem("id") !== null &&
       localStorage.getItem("role") === "Admin"
     ) {
-      navigate("/admin");
+      return navigate("/admin");
+    } else if (
+      localStorage.getItem("id") !== null &&
+      localStorage.getItem("role") === "Dean"
+    ) {
+      return navigate("/dean");
     }
   }, []);
 

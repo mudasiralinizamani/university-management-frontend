@@ -96,7 +96,7 @@ function Admin() {
         Admin Sign Up
       </Typography>
       <div className="entry__info">
-        Just signup as admin and access the features. Enjoy our App
+        Signup as admin and access the features, Enjoy our App :)
       </div>
       <Box
         component="form"
@@ -176,7 +176,7 @@ function Admin() {
                 size="small"
                 fullWidth={true}
                 {...field}
-                label="ConfirmPassword"
+                label="Confirm Password"
                 type="password"
                 error={!!errors.confirmPassword}
                 helperText={
