@@ -3,7 +3,10 @@ const AuthEndpoints = {
   Signup: "/Auth/Signup",
 };
 
-const UsersEndpoints = {};
+const UsersEndpoints = {
+  GetUsers: "/User/GetUsers",
+  GetUser: "/User/GetUser/",
+};
 
 const FacultyEndpoints = {};
 
