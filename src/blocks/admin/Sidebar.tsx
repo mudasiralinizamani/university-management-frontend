@@ -79,6 +79,15 @@ function Sidebar(props: properties) {
             </svg>
             <div className="sidebar__item__text">Dashboard</div>
           </Link>
+          <Link
+            to="/admin/faculties"
+            className={`sidebar__item ${
+              location.pathname.includes("faculties") ? "active" : ""
+            }`}
+          >
+            <AccountTreeOutlinedIcon className="icon" />
+            <div className="sidebar__item__text">Faculties</div>
+          </Link>
           {/* Account links Section */}
           <div className="sidebar2__category">Account</div>
           <a className="sidebar__item" onClick={onSignout}>

@@ -23,6 +23,15 @@ const AuthDean = lazy(() => import("./features/auth/pages/Dean"));
 
 // Importing Admin Pages
 const AdminIndex = lazy(() => import("./dashboards/admin/pages/admin"));
+const AdminCreateFaculty = lazy(
+  () => import("./dashboards/admin/pages/faculty/CreateFaculty")
+);
+const AdminFaculties = lazy(
+  () => import("./dashboards/admin/pages/faculty/Faculties")
+);
+const AdminFaculty = lazy(
+  () => import("./dashboards/admin/pages/faculty/Faculty")
+);
 
 // Importing Dean Pages
 const DeanIndex = lazy(() => import("./dashboards/dean/pages/Dean"));
@@ -102,6 +111,11 @@ function App() {
           }
         >
           <Route index element={<AdminIndex />} />
+
+          {/* Faculty Routes */}
+          <Route path="faculties/create" element={<AdminCreateFaculty />} />
+          <Route path="faculties" element={<AdminFaculties />} />
+          <Route path="faculties/:faculty_id" element={<AdminFaculty />} />
         </Route>
 
         {/* Dean Dashboard Routes */}

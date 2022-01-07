@@ -6,9 +6,14 @@ const AuthEndpoints = {
 const UsersEndpoints = {
   GetUsers: "/User/GetUsers",
   GetUser: "/User/GetUser/",
+  GetDeans: "/User/GetUsersInRole/Dean",
 };
 
-const FacultyEndpoints = {};
+const FacultyEndpoints = {
+  GetFaculties: "/Faculty/GetFaculties",
+  GetFaculty: "/Faculty/GetFaculty/",
+  CreateFaculty: "/Faculty/Create"
+};
 
 const NotificationEndpoints = {};
 
