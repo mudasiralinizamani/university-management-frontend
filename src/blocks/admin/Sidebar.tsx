@@ -6,6 +6,7 @@ import "../../assets/scss/blocks/Sidebar.scss";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import ApiOutlinedIcon from "@mui/icons-material/ApiOutlined";
 import AccountTreeOutlinedIcon from "@mui/icons-material/AccountTreeOutlined";
 import signout from "../../core/services/signout";
 
@@ -87,6 +88,15 @@ function Sidebar(props: properties) {
           >
             <AccountTreeOutlinedIcon className="icon" />
             <div className="sidebar__item__text">Faculties</div>
+          </Link>
+          <Link
+            to="/admin/departments"
+            className={`sidebar__item ${
+              location.pathname.includes("department") ? "active" : ""
+            }`}
+          >
+            <ApiOutlinedIcon className="icon" />
+            <div className="sidebar__item__text">Departments</div>
           </Link>
           {/* Account links Section */}
           <div className="sidebar2__category">Account</div>

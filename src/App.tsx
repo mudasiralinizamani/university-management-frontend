@@ -32,6 +32,15 @@ const AdminFaculties = lazy(
 const AdminFaculty = lazy(
   () => import("./dashboards/admin/pages/faculty/Faculty")
 );
+const AdminCreateDepartment = lazy(
+  () => import("./dashboards/admin/pages/department/CreateDepartment")
+);
+const AdminDepartments = lazy(
+  () => import("./dashboards/admin/pages/department/Departments")
+);
+const AdminDepartment = lazy(
+  () => import("./dashboards/admin/pages/department/Department")
+);
 
 // Importing Dean Pages
 const DeanIndex = lazy(() => import("./dashboards/dean/pages/Dean"));
@@ -116,6 +125,17 @@ function App() {
           <Route path="faculties/create" element={<AdminCreateFaculty />} />
           <Route path="faculties" element={<AdminFaculties />} />
           <Route path="faculties/:faculty_id" element={<AdminFaculty />} />
+
+          {/* Department Routes */}
+          <Route
+            path="departments/create"
+            element={<AdminCreateDepartment />}
+          />
+          <Route path="departments" element={<AdminDepartments />} />
+          <Route
+            path="departments/:department_id"
+            element={<AdminDepartment />}
+          />
         </Route>
 
         {/* Dean Dashboard Routes */}
