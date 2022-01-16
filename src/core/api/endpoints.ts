@@ -15,6 +15,10 @@ const FacultyEndpoints = {
   GetFaculties: "/Faculty/GetFaculties",
   GetFaculty: "/Faculty/GetFaculty/",
   CreateFaculty: "/Faculty/Create",
+  GetDepartments: "/Department/GetFacultyDepartments/",
+  UpdateDean: "/Faculty/UpdateDean",
+  UpdateName: "/Faculty/UpdateName",
+  Delete: "/Faculty/Delete/",
 };
 
 const NotificationEndpoints = {};
