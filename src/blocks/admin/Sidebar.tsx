@@ -4,10 +4,9 @@ import "../../assets/scss/blocks/Sidebar.scss";
 
 // Material Icons - Mudasir Nizamani
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
-import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ApiOutlinedIcon from "@mui/icons-material/ApiOutlined";
 import AccountTreeOutlinedIcon from "@mui/icons-material/AccountTreeOutlined";
+import AppsOutlinedIcon from "@mui/icons-material/AppsOutlined";
 import signout from "../../core/services/signout";
 
 interface properties {
@@ -92,11 +91,20 @@ function Sidebar(props: properties) {
           <Link
             to="/admin/departments"
             className={`sidebar__item ${
-              location.pathname.includes("department") ? "active" : ""
+              location.pathname.includes("departments") ? "active" : ""
             }`}
           >
             <ApiOutlinedIcon className="icon" />
             <div className="sidebar__item__text">Departments</div>
+          </Link>
+          <Link
+            to="/admin/subjects"
+            className={`sidebar__item ${
+              location.pathname.includes("subjects") ? "active" : ""
+            }`}
+          >
+            <AppsOutlinedIcon className="icon" />
+            <div className="sidebar__item__text">Subjects</div>
           </Link>
           {/* Account links Section */}
           <div className="sidebar2__category">Account</div>

@@ -41,6 +41,15 @@ const AdminDepartments = lazy(
 const AdminDepartment = lazy(
   () => import("./dashboards/admin/pages/department/Department")
 );
+const AdminSubjects = lazy(
+  () => import("./dashboards/admin/pages/subject/Subjects")
+);
+const AdminSubject = lazy(
+  () => import("./dashboards/admin/pages/subject/Subject")
+);
+const AdminCreateSubject = lazy(
+  () => import("./dashboards/admin/pages/subject/CreateSubject")
+);
 
 // Importing Dean Pages
 const DeanIndex = lazy(() => import("./dashboards/dean/pages/Dean"));
@@ -136,6 +145,11 @@ function App() {
             path="departments/:department_id"
             element={<AdminDepartment />}
           />
+
+          {/* Subjects Routes */}
+          <Route path="subjects/create" element={<AdminCreateSubject />} />
+          <Route path="subjects" element={<AdminSubjects />} />
+          <Route path="subjects/:subject_id" element={<AdminSubject />} />
         </Route>
 
         {/* Dean Dashboard Routes */}

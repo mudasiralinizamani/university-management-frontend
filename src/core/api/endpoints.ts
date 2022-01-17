@@ -29,10 +29,17 @@ const DepartmentEndpoints = {
   CreateDepartment: "/Department/Create",
 };
 
+const SubjectEndpoints = {
+  GetSubjects: "/Subject/GetSubjects/",
+  CreateSubject: "/Subject/Create/",
+  GetSubject: "/Subject/GetSubjects/",
+};
+
 export {
   AuthEndpoints,
   UsersEndpoints,
   FacultyEndpoints,
   NotificationEndpoints,
   DepartmentEndpoints,
+  SubjectEndpoints,
 };
