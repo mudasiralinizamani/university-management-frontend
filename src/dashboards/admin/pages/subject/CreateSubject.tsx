@@ -8,32 +8,49 @@ import axios from "../../../../core/api/axios";
 import {
   DepartmentEndpoints,
   SubjectEndpoints,
+  UsersEndpoints,
 } from "../../../../core/api/endpoints";
 import { IDepartment } from "../../../../core/models/IDepartment.interface";
+import { IUser } from "../../../../core/models/IUser.interface";
 import { ICreateSubject } from "../../models/ICreateSubject";
 
 function CreateSubject() {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const [departments, setDepartments] = useState<IDepartment[]>();
+  const [teachers, setTeachers] = useState<IUser[]>();
 
   //Form Data
   const [name, setName] = useState<string>("");
   const [departmentId, setDepartmentId] = useState<string>("");
+  const [teacherId, setTeacherId] = useState<string>("");
 
   useEffect(() => {
+    const getTeachers = async () =>
+      axios
+        .get(UsersEndpoints.GetTeachers)
+        .then((res) => setTeachers(res.data));
     const getDepartments = async () =>
       await axios
         .get(DepartmentEndpoints.GetDepartments)
         .then((res) => setDepartments(res.data))
         .catch((err: AxiosError) => {});
+    getTeachers();
     getDepartments();
-    return () => setDepartments([]);
+    return () => {
+      setDepartments([]);
+      setTeachers([]);
+    };
   }, []);
 
   const defaultProps = {
     options: departments,
     getOptionLabel: (option: IDepartment) => `${option.name}`,
+  };
+
+  const defaultTeacherProps = {
+    options: teachers,
+    getOptionLabel: (option: IUser) => `${option.fullName}`,
   };
 
   const Submit = async (e: SyntheticEvent) => {
@@ -45,6 +62,13 @@ function CreateSubject() {
     ) {
       enqueueSnackbar("Plz select a Department", { variant: "error" });
       return;
+    } else if (
+      teacherId === "" ||
+      teacherId === null ||
+      teacherId === undefined
+    ) {
+      enqueueSnackbar("Plz select a Teacher", { variant: "error" });
+      return;
     } else if (name === "" || name === null || name === undefined) {
       enqueueSnackbar("Name cannot be empty", { variant: "error" });
       return;
@@ -52,6 +76,7 @@ function CreateSubject() {
     const model: ICreateSubject = {
       name: name,
       departmentId: departmentId,
+      teacherId: teacherId,
     };
     await axios
       .post(SubjectEndpoints.CreateSubject, model)
@@ -67,6 +92,12 @@ function CreateSubject() {
             enqueueSnackbar(err.response.data.error, { variant: "error" });
             break;
           case "SubjectNameFound":
+            enqueueSnackbar(err.response.data.error, { variant: "error" });
+            break;
+          case "TeacherNotFound":
+            enqueueSnackbar(err.response.data.error, { variant: "error" });
+            break;
+          case "UserNotTeacher":
             enqueueSnackbar(err.response.data.error, { variant: "error" });
             break;
           case "ServerError":
@@ -110,6 +141,21 @@ function CreateSubject() {
                   <TextField
                     {...params}
                     label="Select Department *"
+                    variant="standard"
+                  />
+                )}
+              />
+              <Autocomplete
+                {...defaultTeacherProps}
+                id="clear-on-escape"
+                sx={{ marginBottom: "14px" }}
+                clearOnEscape
+                freeSolo
+                onChange={(event, value: any) => setTeacherId(value?.id)}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Select Teacher *"
                     variant="standard"
                   />
                 )}

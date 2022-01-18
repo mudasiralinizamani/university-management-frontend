@@ -34,6 +34,24 @@ function Subjects() {
     { field: "id", headerName: "ID" },
     { field: "name", headerName: "Name", width: 210 },
     {
+      field: "teacherName",
+      headerName: "Teacher",
+      width: 250,
+      renderCell: (params: GridRenderCellParams) => (
+        <strong>
+          {params.row.teacherName}
+          <IconButton
+            size="small"
+            aria-label="close"
+            color="inherit"
+            onClick={() => navigate(`/admin/users/${params.row.teacherId}`)}
+          >
+            <VisibilityOutlinedIcon fontSize="small" />
+          </IconButton>
+        </strong>
+      ),
+    },
+    {
       field: "courseAdviserName",
       headerName: "Course Adviser",
       width: 250,

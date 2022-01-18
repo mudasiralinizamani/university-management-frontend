@@ -5,4 +5,6 @@ export interface ISubject {
   departmentName: string;
   courseAdviserId: string;
   courseAdviserName: string;
+  teacherId: string;
+  teacherName: string;
 }

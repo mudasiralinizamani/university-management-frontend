@@ -20,6 +20,7 @@ import DeanLayout from "./core/layouts/DeanLayout";
 const AuthSignin = lazy(() => import("./features/auth/pages/Signin"));
 const AuthAdmin = lazy(() => import("./features/auth/pages/Admin"));
 const AuthDean = lazy(() => import("./features/auth/pages/Dean"));
+const AuthTeacher = lazy(() => import("./features/auth/pages/Teacher"));
 
 // Importing Admin Pages
 const AdminIndex = lazy(() => import("./dashboards/admin/pages/admin"));
@@ -96,6 +97,7 @@ function App() {
           <Route index element={<AuthSignin />} />
           <Route path="auth/admin" element={<AuthAdmin />} />
           <Route path="auth/dean" element={<AuthDean />} />
+          <Route path="auth/teacher" element={<AuthTeacher />} />
         </Route>
 
         {/* Admin Dashboard Routes */}

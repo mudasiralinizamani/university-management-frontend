@@ -9,6 +9,7 @@ const UsersEndpoints = {
   GetDeans: "/User/GetUsersInRole/Dean",
   GetHods: "/User/GetUsersInRole/Hod",
   GetCourseAdvisers: "/User/GetUsersInRole/CourseAdviser",
+  GetTeachers: "/User/GetUsersInRole/Teacher",
 };
 
 const FacultyEndpoints = {
